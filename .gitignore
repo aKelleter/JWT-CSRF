@@ -1,0 +1,21 @@
+# APP ###
+
+
+# MACOS ###
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# WINDOWS ###
+desktop.ini
+*.tmp
+
+# GIT ### 
+.git/
+
+# NETBEANS ###
+/nbproject/
+
+# VS CODE ###
+.vscode/
+

@@ -1,0 +1,10 @@
+https://nouvelle-techno.fr/articles/securisez-vos-applications-php-avec-jwt-and-csrf
+
+https://nouvelle-techno.fr/articles/comprendre-les-jetons-csrf-et-securiser-vos-formulaires
+
+https://grafikart.fr/tutoriels/json-web-token-presentation-958
+https://www.youtube.com/watch?v=S-xBAo47W58&t=392s
+
+https://www.phptutorial.net/php-tutorial/php-csrf/
+
+https://www.vaadata.com/blog/fr/jetons-jwt-et-securite-principes-et-cas-dutilisation/
