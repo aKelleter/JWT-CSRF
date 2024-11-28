@@ -1,2 +1,2 @@
 # JWT-CSRF
- Create and test  a JWT-CSRF system
+JWT and CSRF system
