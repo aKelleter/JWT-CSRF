@@ -1,3 +1,5 @@
+https://www.youtube.com/watch?v=5qNfPBcogCs
+
 https://nouvelle-techno.fr/articles/securisez-vos-applications-php-avec-jwt-and-csrf
 
 https://nouvelle-techno.fr/articles/comprendre-les-jetons-csrf-et-securiser-vos-formulaires

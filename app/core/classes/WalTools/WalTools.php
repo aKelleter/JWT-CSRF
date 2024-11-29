@@ -4,7 +4,7 @@ namespace app\core\classes\WalTools;
 
 class WalTools {
 
-    const VDUMP = 'var_dump';
+    const VARDUMP = 'var_dump';
     const PRINTR = 'print_r';
 
     /**
@@ -16,10 +16,10 @@ class WalTools {
      * @param bool $exit 
      * @return void 
      */
-    static function wtPrintr($data, $title = '', $type = self::PRINTR, $exit = false) {
+    static function printr($data, $title = '', $type = self::PRINTR, $exit = false) {
 
         echo '<div style="border: 1px solid #000; padding: 1em;">';
-        if ($type == self::VDUMP) {
+        if ($type == self::VARDUMP) {
             echo '<pre>';
             echo '<h3>'.$title.'</h3>';
             echo '<hr>';

@@ -1,4 +1,12 @@
 <?php
-const VERSION = '1.0.0 - 28112024 - 16:10';
+/**
+ * Configuration
+ */
+const VERSION = '0.2.0 - 29112024 - 16:15';
 const SECRET = 'eUbpA[y)CjUdAX1+7c=2Bx9A';
 const DOMAIN = 'localhost';
+
+/**
+ * Session
+ */
+session_start();

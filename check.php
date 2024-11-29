@@ -2,18 +2,19 @@
 require_once 'conf.php';
 use app\core\classes\CsrfToken\CsrfToken;
 use app\core\classes\JWT\JWT;
+use app\core\classes\WalHtml\WalHtml;
 use app\core\classes\WalTools\WalTools;
 
 require 'vendor/autoload.php';
 
-session_start();
-
 $jwt = new JWT();
 
-// On récupère le header et les cookies
+// On récupère le token JWT dans le cookie
 $jwtToken = $_COOKIE['jwt_token'] ?? '';
+// On récupère le token CSRF dans le cookie
 $csrfCookie = $_COOKIE['csrf_token'] ?? '';
-$csrfHeader = $_SERVER['HTTP_X_CSRF_TOKEN'] ?? '';
+// Si le header est présent, on le récupère, sinon on récupère le POST
+$csrfHeader = $_SERVER['HTTP_X_CSRF_TOKEN'] ?? $_POST['csrf_token'] ?? '';
 
 // Vérifications
 try {
@@ -36,6 +37,7 @@ try {
 
     // On traite les données
     $jwtData = $jwt->getPayload($jwtToken) ?? '';
+    WalTools::printr($_POST, '$_POST', WalTools::PRINTR);
 
     if (!empty($jwtData)) {
        echo json_encode($jwtData);
