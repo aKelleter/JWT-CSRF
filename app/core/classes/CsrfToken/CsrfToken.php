@@ -28,7 +28,7 @@ class CsrfToken {
         // Génération d'un token CSRF
         $token = bin2hex(random_bytes(self::LENGHT_CSRF_TOKEN));
 
-        // Stockage du token CSRF
+        // Stockage en session du token CSRF
         $_SESSION['csrf_token'] = $token;
 
         // Génération du token CSRF final

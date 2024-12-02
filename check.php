@@ -7,14 +7,18 @@ use app\core\classes\WalTools\WalTools;
 
 require 'vendor/autoload.php';
 
-$jwt = new JWT();
+//DEBUG// WalTools::printr($_COOKIE,'COOKIE');
 
 // On récupère le token JWT dans le cookie
-$jwtToken = $_COOKIE['jwt_token'] ?? '';
+$jwtToken = $_COOKIE[COOKIENAME_JWT_TOKEN] ?? '';
 // On récupère le token CSRF dans le cookie
-$csrfCookie = $_COOKIE['csrf_token'] ?? '';
-// Si le header est présent, on le récupère, sinon on récupère le POST
-$csrfHeader = $_SERVER['HTTP_X_CSRF_TOKEN'] ?? $_POST['csrf_token'] ?? '';
+$csrfCookie = $_COOKIE[COOKIENAME_CSRF_TOKEN] ?? '';
+
+// Si le header est présent, on le récupère, sinon on récupère le POST ou dans le cookie
+$csrfHeader = $_SERVER['HTTP_X_CSRF_TOKEN'] ?? $_POST['csrf_token'] ?? $csrfCookie ?? '';
+
+//DEBUG// WalTools::printr($jwtToken,'jwtToken');
+//DEBUG// WalTools::printr($csrfCookie,'csrfCookie');
 
 // Vérifications
 try {
@@ -31,19 +35,27 @@ try {
     }
 
     // On vérifie le token JWT
+    $jwt = new JWT();
     if (!$jwt->check($jwtToken, SECRET)) {
         throw new \Exception('Token JWT invalide');
     }
 
     // On traite les données
-    $jwtData = $jwt->getPayload($jwtToken) ?? '';
-    WalTools::printr($_POST, '$_POST', WalTools::PRINTR);
-
-    if (!empty($jwtData)) {
-       echo json_encode($jwtData);
-    }else{
-       echo json_encode(['message' => 'Pas de données']); 
+    $jwtData = $jwt->getPayload($jwtToken) ?? '';    
+       
+    if(isset($_POST['type_form']) && $_POST['type_form'] == 'form_user')
+    {
+        WalTools::printr($_POST, '$_POST', WalTools::PRINTR);
+    }else {
+        WalTools::printr($jwtData, '$jwtData', WalTools::PRINTR);
+        if (isset($jwtData['user']) && !empty($jwtData['user'])) {
+            echo json_encode($jwtData);
+        }else{
+            echo json_encode(['message' => 'no data']); 
+        }
     }
+
+   
 
 
 } catch (\Exception $e) {

@@ -34,7 +34,13 @@ class JWT
         $base64Signature = str_replace(['+', '/', '='], ['-', '_', ''], base64_encode($signature));
 
         // Assemblage du JWT
-        return "$base64Header.$base64Payload.$base64Signature";
+        $jwt = "$base64Header.$base64Payload.$base64Signature";
+
+        // Stockage en session du JWT
+        $_SESSION['jwt'] = $jwt;
+
+        // Retour du JWT
+        return $jwt;
     }
 
     /**
