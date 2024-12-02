@@ -54,10 +54,7 @@ try {
             echo json_encode(['message' => 'no data']); 
         }
     }
-
-   
-
-
+    
 } catch (\Exception $e) {
     //Si le JWT ou le CSRF ne sont pas valide
     http_response_code(401);
